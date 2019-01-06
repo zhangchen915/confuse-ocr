@@ -1,0 +1,31 @@
+$mdc-theme-primary: #005d5c;
+@import "preact-material-components/Theme/mdc-theme";
+@import 'preact-material-components/Button/mdc-button';
+@import 'preact-material-components/TextField/mdc-text-field';
+@import 'preact-material-components/LayoutGrid/mdc-layout-grid';
+@import 'preact-material-components/Select/mdc-select';
+@import 'preact-material-components/Snackbar/mdc-snackbar';
+
+$height: 26em;
+$duration: .6s;
+$red: #FF3B99;
+$blue: #5eb9cc;
+$green: #B2FF41;
+$orange: #FF9D00;
+
+body {
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+    font: 1em/1.5 "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.hide {
+    display: none;
+}
+
+.editer {
+    width: 100%;
+    height: 300px;
+    display: inline-block;
+}
