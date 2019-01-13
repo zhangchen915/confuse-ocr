@@ -7,7 +7,7 @@ class Editor extends Component {
     modules = {
         toolbar: [
             [{ 'header': [1, 2, false] }],
-            // [{ 'font': [] }],
+            [{ 'font': [] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ 'color': [] }, { 'background': [] }],
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
@@ -17,7 +17,7 @@ class Editor extends Component {
 
     formats = [
         'header',
-        // 'font',
+        'font',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'color', 'background',
         'list', 'bullet', 'indent',

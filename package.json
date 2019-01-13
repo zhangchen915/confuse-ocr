@@ -10,12 +10,12 @@
   "author": "zhangchen915",
   "license": "MIT",
   "dependencies": {
+    "dom-to-image": "^2.6.0",
     "preact": "^8.4.1",
     "preact-compat": "^3.18.4",
     "preact-i18n": "^1.2.2",
     "preact-material-components": "^1.5.5",
-    "quill": "^1.3.6",
-    "rasterizehtml": "^1.3.0"
+    "quill": "^1.3.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
