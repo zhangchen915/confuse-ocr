@@ -1,34 +1,54 @@
 $mdc-theme-primary: #005d5c;
-@import "preact-material-components/Theme/mdc-theme";
-@import 'preact-material-components/Button/mdc-button';
-@import 'preact-material-components/TextField/mdc-text-field';
-@import 'preact-material-components/LayoutGrid/mdc-layout-grid';
-@import 'preact-material-components/Select/mdc-select';
-@import 'preact-material-components/Snackbar/mdc-snackbar';
+@import "~preact-material-components/Theme/mdc-theme";
+@import '~preact-material-components/Button/mdc-button';
+@import '~preact-material-components/TextField/mdc-text-field';
+@import '~preact-material-components/LayoutGrid/mdc-layout-grid';
+@import '~preact-material-components/Select/mdc-select';
+@import '~preact-material-components/Snackbar/mdc-snackbar';
 
-$height: 26em;
-$duration: .6s;
-$red: #FF3B99;
-$blue: #5eb9cc;
-$green: #B2FF41;
-$orange: #FF9D00;
+@import "~quill/dist/quill.snow";
 
 body {
     margin: 0;
+    min-height: 100vh;
     box-sizing: border-box;
     font: 1em/1.5 "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    background-image: linear-gradient(-120deg, #26e289, #1a5fa2 100%, red 200%);
 }
 
 .hide {
     display: none;
 }
 
-.title{
-    text-align: center
+.wrap {
+    display: grid;
+}
+
+.title {
+    grid-row: 1;
+    grid-column: 1/13;
+    text-align: center;
 }
 
 .editer {
-    width: 100%;
-    height: 300px;
-    display: inline-block;
+    grid-row: 2;
+    grid-column: 3/11;
+    .ql-editor {
+        height: 350px;
+    }
+}
+
+.generate {
+    grid-row: 3;
+    grid-column: 3/5;
+}
+
+.selectAntiStyle {
+    grid-row: 3;
+    grid-column: 5/7;
+}
+
+canvas {
+    grid-row: 4;
+    grid-column: 3/11;
 }

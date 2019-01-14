@@ -1,19 +1,18 @@
-import { h, Component } from 'preact'
+import {h, Component} from 'preact'
 import Quill from 'quill';
-import { Button } from 'preact-material-components';
 
 class Editor extends Component {
-    editorRef = null
+    editorRef = null;
     modules = {
         toolbar: [
-            [{ 'header': [1, 2, false] }],
-            [{ 'font': [] }],
+            [{'header': [1, 2, false]}],
+            [{'font': []}],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{'color': []}, {'background': []}],
+            [{'list': 'ordered'}, {'list': 'bullet'}],
             ['clean']
         ],
-    }
+    };
 
     formats = [
         'header',
@@ -21,7 +20,7 @@ class Editor extends Component {
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'color', 'background',
         'list', 'bullet', 'indent',
-    ]
+    ];
 
     constructor(props) {
         super(props)
@@ -30,15 +29,11 @@ class Editor extends Component {
     componentDidMount() {
         if (!this.editorRef) return;
         this.editor = new Quill(this.editorRef, {
-            theme: this.props.theme,
-            placeholder: this.props.placeholder,
+            theme: 'snow',
             modules: this.modules,
             formats: this.formats,
-        })
-    }
-
-    handleClick () {
-        this.props.convert(this.editor)
+        });
+        this.props.setEditer(this.editor)
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -46,19 +41,12 @@ class Editor extends Component {
     }
 
     render() {
-        return (<div>
-            <div className="editer">
-                <div ref={el => { this.editorRef = el }} />
-            </div>
-            <Button ripple raised onClick={() => this.handleClick ()}>生成</Button>
-        </div>
-        )
+        return (<div className="editer">
+            <div ref={el => {
+                this.editorRef = el
+            }}/>
+        </div>)
     }
-}
-
-Editor.defaultProps = {
-    placeholder: '',
-    theme: 'snow',
 }
 
 export default Editor

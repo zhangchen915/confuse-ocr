@@ -9,12 +9,14 @@ import domtoimage from 'dom-to-image';
 
 import Editor from './editer';
 import {contentHeight, randomStroke} from './component/utility'
+import Button from "preact-material-components/Button";
 
 export default class App extends Component {
     constructor() {
         super();
         this.state = {
-            antiStyle: 1
+            antiStyle: 1,
+            editer: {}
         };
     }
 
@@ -26,13 +28,17 @@ export default class App extends Component {
         }
     }
 
-    convert = (editer) => {
+    setEditer = (editer) => {
+        this.setState({editer: editer})
+    };
+
+    convert = () => {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.canvas.width = editer.root.scrollWidth;
-        this.canvas.height = contentHeight(editer);
+        this.canvas.width = this.state.editer.root.scrollWidth;
+        this.canvas.height = contentHeight(this.state.editer);
 
-        domtoimage.toPng(editer.root, {
+        domtoimage.toPng(this.state.editer.root, {
             width: this.canvas.width,
             height: this.canvas.height + 20,
             quality: .5,
@@ -47,11 +53,12 @@ export default class App extends Component {
     };
 
     render() {
-        return (<div className="">
+        return (<div className="wrap">
             <h2 className='title'>ANTI-OCR</h2>
-            <Editor convert={this.convert}/>
+            <Editor setEditer={this.setEditer}/>
 
-            <Select hintText="选择对抗方式"
+            <Button className='generate' ripple raised onClick={() => this.convert()}>生成</Button>
+            <Select className='selectAntiStyle' hintText="选择对抗方式"
                     selectedIndex={this.state.antiStyle}
                     onChange={e => {
                         this.setState({
@@ -64,7 +71,7 @@ export default class App extends Component {
                 <Select.Item>- - -</Select.Item>
             </Select>
 
-            <canvas ref={e => this.canvas = e}></canvas>
+            <canvas width={0} height={0} ref={e => this.canvas = e}/>
             <Snackbar ref={bar => {
                 this.bar = bar;
             }}/>
