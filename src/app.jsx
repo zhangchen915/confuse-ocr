@@ -1,6 +1,6 @@
-import { h, Component } from 'preact';
-import { withText, Text } from 'preact-i18n';
-import { Snackbar, Select } from 'preact-material-components';
+import {h, Component} from 'preact';
+import {withText, Text} from 'preact-i18n';
+import {Snackbar, Select} from 'preact-material-components';
 import 'preact-material-components/List/style.css';
 import 'preact-material-components/Menu/style.css';
 import 'preact-material-components/Select/style.css';
@@ -8,7 +8,7 @@ import 'preact-material-components/Select/style.css';
 import domtoimage from 'dom-to-image';
 
 import Editor from './editer';
-import { randomStroke } from './component/utility'
+import {contentHeight, randomStroke} from './component/utility'
 
 export default class App extends Component {
     constructor() {
@@ -30,7 +30,7 @@ export default class App extends Component {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.canvas.width = editer.root.scrollWidth;
-        this.canvas.height = editer.root.scrollHeight;
+        this.canvas.height = contentHeight(editer);
 
         domtoimage.toPng(editer.root, {
             width: this.canvas.width,
@@ -44,20 +44,20 @@ export default class App extends Component {
                 message: err
             });
         });
-    }
+    };
 
     render() {
         return (<div className="">
             <h2 className='title'>ANTI-OCR</h2>
-            <Editor convert={this.convert} />
+            <Editor convert={this.convert}/>
 
             <Select hintText="选择对抗方式"
-                selectedIndex={this.state.antiStyle}
-                onChange={e => {
-                    this.setState({
-                        antiStyle: e.target.selectedIndex
-                    });
-                }}>
+                    selectedIndex={this.state.antiStyle}
+                    onChange={e => {
+                        this.setState({
+                            antiStyle: e.target.selectedIndex
+                        });
+                    }}>
                 <Select.Item>⬜</Select.Item>
                 <Select.Item>⚪</Select.Item>
                 <Select.Item>——</Select.Item>
@@ -65,7 +65,9 @@ export default class App extends Component {
             </Select>
 
             <canvas ref={e => this.canvas = e}></canvas>
-            <Snackbar ref={bar => { this.bar = bar; }} />
+            <Snackbar ref={bar => {
+                this.bar = bar;
+            }}/>
         </div>);
     }
 }

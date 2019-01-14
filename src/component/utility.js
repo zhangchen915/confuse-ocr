@@ -2,8 +2,12 @@ function random(max, min = 0) {
     return Math.round(Math.random() * (max - min)) + min;
 }
 
+export function contentHeight(editer) {
+    const bottom = editer.getBounds(editer.getLength()).bottom;
+    return bottom < editer.root.clientHeight ? bottom : editer.root.scrollHeight;
+}
+
 export const randomStroke = (context, shape) => {
-    console.log(shape)
     const pointNum = Math.max(context.canvas.width, context.canvas.height);
     for (let i = 0; i < pointNum; i++) {
         let x = random(context.canvas.width);
