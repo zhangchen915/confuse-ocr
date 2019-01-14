@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 import { withText, Text } from 'preact-i18n';
-import Snackbar from 'preact-material-components/Snackbar';
-import Select from 'preact-material-components/Select';
+import { Snackbar, Select } from 'preact-material-components';
 import 'preact-material-components/List/style.css';
 import 'preact-material-components/Menu/style.css';
 import 'preact-material-components/Select/style.css';
@@ -15,7 +14,7 @@ export default class App extends Component {
     constructor() {
         super();
         this.state = {
-            antiStyle: 0
+            antiStyle: 1
         };
     }
 
@@ -54,7 +53,7 @@ export default class App extends Component {
 
             <Select hintText="选择对抗方式"
                 selectedIndex={this.state.antiStyle}
-                onChange={(e) => {
+                onChange={e => {
                     this.setState({
                         antiStyle: e.target.selectedIndex
                     });
