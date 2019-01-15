@@ -4,7 +4,7 @@
   "description": "antiocr",
   "main": "index.html",
   "scripts": {
-    "build": "parcel build ./index.html --no-source-maps",
+    "build": "parcel build ./index.html --public-url ./ --no-source-maps",
     "dev": "parcel ./index.html  --hmr-hostname 127.0.0.1 --no-source-maps"
   },
   "author": "zhangchen915",
