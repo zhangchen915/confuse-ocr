@@ -1,6 +1,6 @@
-import {h, Component} from 'preact';
-import {withText, Text} from 'preact-i18n';
-import {Snackbar, Select} from 'preact-material-components';
+import { h, Component } from 'preact';
+import { withText, Text } from 'preact-i18n';
+import { Snackbar, Select } from 'preact-material-components';
 import 'preact-material-components/List/style.css';
 import 'preact-material-components/Menu/style.css';
 import 'preact-material-components/Select/style.css';
@@ -8,7 +8,7 @@ import 'preact-material-components/Select/style.css';
 import domtoimage from 'dom-to-image';
 
 import Editor from './editer';
-import {contentHeight, randomStroke} from './component/utility'
+import { contentHeight, randomStroke } from './component/utility'
 import Button from "preact-material-components/Button";
 
 export default class App extends Component {
@@ -29,7 +29,7 @@ export default class App extends Component {
     }
 
     setEditer = (editer) => {
-        this.setState({editer: editer})
+        this.setState({ editer: editer })
     };
 
     convert = () => {
@@ -55,26 +55,27 @@ export default class App extends Component {
     render() {
         return (<div className="wrap">
             <h2 className='title'>ANTI-OCR</h2>
-            <Editor setEditer={this.setEditer}/>
+            <Editor setEditer={this.setEditer} />
 
-            <Button className='generate' ripple raised onClick={() => this.convert()}>生成</Button>
             <Select className='selectAntiStyle' hintText="选择对抗方式"
-                    selectedIndex={this.state.antiStyle}
-                    onChange={e => {
-                        this.setState({
-                            antiStyle: e.target.selectedIndex
-                        });
-                    }}>
+                selectedIndex={this.state.antiStyle}
+                outlined={true}
+                onChange={e => {
+                    this.setState({
+                        antiStyle: e.target.selectedIndex
+                    });
+                }}>
                 <Select.Item>⬜</Select.Item>
                 <Select.Item>⚪</Select.Item>
                 <Select.Item>——</Select.Item>
                 <Select.Item>- - -</Select.Item>
             </Select>
+            <Button className='generate' ripple raised onClick={() => this.convert()}>生成</Button>
 
-            <canvas width={0} height={0} ref={e => this.canvas = e}/>
+            <canvas width={0} height={0} ref={e => this.canvas = e} />
             <Snackbar ref={bar => {
                 this.bar = bar;
-            }}/>
+            }} />
         </div>);
     }
 }
